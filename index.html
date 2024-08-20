@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+        }
+        .navbar .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .navbar button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .navbar img {
+            height: 40px;
+        }
+        .content {
+            padding: 20px;
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+        .article {
+            background-color: green;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 5px solid red;
+            border-radius: 5px;
+            position: relative;
+            box-sizing: border-box;
+            text-align: center;
+            width: 700px;
+        }
+        .article:nth-child(odd) {
+            background-color: darkgreen;
+        }
+        .article::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid blue;
+            border-radius: 5px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        @media (max-width: 700px) {
+            .article {
+                width: 100%;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar .buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+            .navbar button {
+                width: 100%;
+                margin: 2px 0;
+            }
+            .navbar img {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="buttons">
+            <button onclick="showTab('avisos')">Avisos</button>
+            <button onclick="showTab('calendario')">Calendario</button>
+            <button onclick="showTab('eventos')">Eventos</button>
+        </div>
+        <img src="https://cdn.discordapp.com/attachments/890647956204716062/1275383591911690332/logocree.png?ex=66c5b107&is=66c45f87&hm=e8d5cb1a9909720089fabec4b328c87562b43d27e50c251867f9ac54cd0a61d0&" alt="Logo CREE">
+    </div>
+
+    <div id="avisos" class="content active">
+        <div class="article">
+            <h2>Primer aviso</h2>
+            <p>Este es el contenido del primer aviso.</p>
+            <hr style="margin-top: 20px;">
+        </div>
+        <div class="article">
+            <h2>Segundo aviso</h2>
+            <p>Este es el contenido del segundo aviso.</p>
+            <hr style="margin-top: 20px;">
+        </div>
+    </div>
+
+    <div id="calendario" class="content">
+        <div class="article">
+            <h2>Calendario de actividades</h2>
+            <p>Este es el contenido del calendario de actividades.</p>
+            <hr style="margin-top: 20px;">
+        </div>
+    </div>
+
+    <div id="eventos" class="content">
+        <div class="article">
+            <h2>Inauguración del Blog</h2>
+            <p>¡Bienvenidos a nuestro nuevo blog! Aquí publicaremos información sobre próximos eventos del CREE (Centro de Recursos para la Enseñanza y el Aprendizaje), noticias relevantes sobre tecnología e informática, tutoriales útiles y mucho más.</p>
+            <p>Este blog está hecho por alumnos de 3ro A de bachillerato técnico en informática turno mañana (T.M.). Estamos emocionados de compartir con ustedes nuestras experiencias, conocimientos y descubrimientos en el mundo de la informática.</p>
+            <p>¡No te pierdas nuestras actualizaciones! Mantente al tanto de las últimas noticias y eventos importantes para la comunidad del CREE.</p>
+            <hr style="margin-top: 20px;">
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            var tabs = document.querySelectorAll('.content');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
